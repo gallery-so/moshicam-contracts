@@ -1,0 +1,34 @@
+[profile.default]
+src = "src"
+out = "out"
+test = "test"
+libs = ["lib"]
+solc = "0.8.25"
+evm_version = 'cancun'
+ffi = true
+ast = true
+build_info = true
+extra_output = ["storageLayout"]
+fs_permissions = [
+  { access = "read", path = "./config" },
+  { access = "readwrite", path = "./deployments" },
+  { access = "read", path = "./out" },
+  { access = "read", path = "./border_configs.json" },
+  { access = "readwrite", path = "./border_result.sql" },
+]
+gas_reports = ["*"]
+
+[rpc_endpoints]
+local = "127.0.0.1:8545"
+base_sepolia = "https://sepolia.base.org"
+base = "https://mainnet.base.org"
+
+[etherscan]
+local = { key = "dummykey" , chain = "31337" , url = "https://example.com" }
+base_sepolia = { key = "${BLOCK_EXPLORER_API_KEY}" }
+base = { key = "${BLOCK_EXPLORER_API_KEY}" }
+
+[fmt]
+sort_imports = true
+
+# See more config options https://github.com/foundry-rs/foundry/tree/master/config
